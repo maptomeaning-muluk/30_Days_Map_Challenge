@@ -119,6 +119,39 @@ with col2:
         )
         marker.add_to(Map)
 
+        # Function to create the legend
+    def add_legend(map_object):
+        legend_html = '''
+            <div style="position: fixed; 
+                        bottom: 30px; left: 30px; width: 150px; 
+                        height: auto; background-color: white; 
+                        border: 2px solid grey; z-index: 1000;
+                        padding: 10px;">
+                <h4 style="margin: 0; font-size: 16px;">GI Tag Categories</h4>
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 20px; height: 20px; background-color: darkorange; margin-right: 5px;"></div>
+                    <span>Handicraft</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 20px; height: 20px; background-color: purple; margin-right: 5px;"></div>
+                    <span>Manufacturing</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 20px; height: 20px; background-color: green; margin-right: 5px;"></div>
+                    <span>Agriculture</span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 20px; height: 20px; background-color: blue; margin-right: 5px;"></div>
+                    <span>Other</span>
+                </div>
+            </div>
+        '''
+        # Add the legend to the map
+        map_object.get_root().html.add_child(fl.Element(legend_html))
+
+    # Add legend to the map
+    add_legend(Map)
+
     # Display map
     folium_static(Map, height=700, width=1100)
 
