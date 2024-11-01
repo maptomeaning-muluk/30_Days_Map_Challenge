@@ -19,7 +19,7 @@ except Exception as e:
 
 
 # Set up page title
-st.title("GI Tags in Maharashtra")
+st.header("GI Tags in Maharashtra")
 st.write("Click on a point on the map to view details about each GI Tag.")
 
 # Calculate the centroid for the map center
