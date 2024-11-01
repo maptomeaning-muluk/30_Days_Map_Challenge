@@ -119,5 +119,5 @@ with col2:
         marker.add_to(Map)
 
     # Display map
-    folium_static(Map, height=500, width=1100)
+    folium_static(Map, height=600, width=1100)
 
