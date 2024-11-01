@@ -1,6 +1,6 @@
 streamlit
 pandas
-geopandas=0.10.2
+geopandas==0.10.2
 folium
 streamlit_folium
 matplotlib
