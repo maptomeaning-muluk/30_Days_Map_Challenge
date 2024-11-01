@@ -4,7 +4,7 @@ import geopandas as gpd
 import folium as fl
 from streamlit_folium import folium_static
 import matplotlib.pyplot as plt
-import json
+
 
 # Set the page configuration to wide layout
 st.set_page_config(layout="wide")
