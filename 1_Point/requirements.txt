@@ -1,4 +1,5 @@
 streamlit
+distutils
 pandas
 geopandas==0.10.2
 folium
