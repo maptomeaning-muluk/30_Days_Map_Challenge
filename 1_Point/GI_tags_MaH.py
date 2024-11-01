@@ -41,8 +41,8 @@ with col1:
         unsafe_allow_html=True
     )
 
-    categories = GI_tag_Layer[['GI_Tag_Name', 'Category']].drop_duplicates()
-    category_counts = categories['Category'].value_counts()
+    categories = GI_tag_Layer[["GI_Tag_Name", "Category"]].drop_duplicates()
+    category_counts = categories["Category"].value_counts()
 
     # Define colors for each category
     color_map = {
