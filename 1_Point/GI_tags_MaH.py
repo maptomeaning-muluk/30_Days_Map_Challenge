@@ -74,7 +74,7 @@ with col1:
 
 with col2:
     # Initialize the map
-    Map = fl.Map(location=map_center, tiles='Cartodb Positron', zoom_start= 6.5)
+    Map = fl.Map(location= [19.7515,75.7139], tiles='Cartodb Positron', zoom_start= 6.5)
 
     # Add state boundary layer with styling
     state_style_function = lambda x: {
