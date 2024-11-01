@@ -13,10 +13,10 @@ st.set_page_config(layout="wide")
 try:
     State_Layer = gpd.read_file(r"https://raw.githubusercontent.com/maptomeaning-muluk/30_Days_Map_Challenge/main/1_Point/Maharashtra.geojson").to_crs("EPSG:4326")
     GI_tag_Layer = gpd.read_file(r"https://raw.githubusercontent.com/maptomeaning-muluk/30_Days_Map_Challenge/main/1_Point/GI_tags_MH_Final.geojson").to_crs("EPSG:4326")
-
 except Exception as e:
     st.error(f"Error loading files: {e}")
     st.stop()
+
 
 # Set up page title
 st.title("GI Tags in Maharashtra")
@@ -42,8 +42,8 @@ with col1:
         unsafe_allow_html=True
     )
 
-    categories = GI_tag_Layer[['GI_Tag_Name', 'Category']].drop_duplicates()
-    category_counts = categories['Category'].value_counts()
+    categories = GI_tag_Layer[["GI_Tag_Name", "Category"]].drop_duplicates()
+    category_counts = categories["Category"].value_counts()
 
     # Define colors for each category
     color_map = {

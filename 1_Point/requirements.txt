@@ -1,0 +1,8 @@
+streamlit
+setuptools
+pandas
+geopandas==0.10.2
+folium
+streamlit_folium
+matplotlib
+
