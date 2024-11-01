@@ -4,22 +4,23 @@ import geopandas as gpd
 import folium as fl
 from streamlit_folium import folium_static
 import matplotlib.pyplot as plt
-import json
+
 
 # Set the page configuration to wide layout
 st.set_page_config(layout="wide")
 
 # Load the GeoJSON files (ensure CRS is set to EPSG:4326 for folium compatibility)
 try:
-    State_Layer = gpd.read_file(r"D:\30_days_Map_Challenge\1_Point\Maharashtra.geojson").to_crs("EPSG:4326")
-    GI_tag_Layer= gpd.read_file(r"D:\30_days_Map_Challenge\1_Point\GI_tags_MH_Final.geojson").to_crs("EPSG:4326")
+    State_Layer = gpd.read_file(r"https://raw.githubusercontent.com/maptomeaning-muluk/30_Days_Map_Challenge/main/1_Point/Maharashtra.geojson").to_crs("EPSG:4326")
+    GI_tag_Layer = gpd.read_file(r"https://raw.githubusercontent.com/maptomeaning-muluk/30_Days_Map_Challenge/main/1_Point/GI_tags_MH_Final.geojson").to_crs("EPSG:4326")
 
 except Exception as e:
     st.error(f"Error loading files: {e}")
+    st.stop()
 
 # Set up page title
 st.title("GI Tags in Maharashtra")
-# st.write("Click on a point on the map to view details about each GI Tag.")
+st.write("Click on a point on the map to view details about each GI Tag.")
 
 # Calculate the centroid for the map center
 centroid = State_Layer.geometry.centroid.iloc[0]
@@ -118,5 +119,5 @@ with col2:
         marker.add_to(Map)
 
     # Display map
-    folium_static(Map, height=600, width=1200)
+    folium_static(Map, height=500, width=1100)
 
