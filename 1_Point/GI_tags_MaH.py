@@ -18,9 +18,6 @@ except Exception as e:
     st.stop()
 
 
-# Set up page title
-st.header("GI Tags in Maharashtra")
-
 # Calculate the centroid for the map center
 centroid = State_Layer.geometry.centroid.iloc[0]
 map_center = [centroid.y, centroid.x]
@@ -29,6 +26,9 @@ map_center = [centroid.y, centroid.x]
 col1, col2 = st.columns([1, 3])  # 1/3 for col1, 2/3 for col2
 
 with col1:
+    # Set up page title
+    st.header("GI Tags in Maharashtra")
+    
     st.write("Click on a point on the map to view details about each GI Tag.", divider= 'gray')
     
     st.write("A geographical indication (GI) is a sign used on products that have a specific geographical origin and possess qualities or a reputation that are due to that origin. In order to function as a GI, a sign must identify a product as originating in a given place.")
