@@ -2,6 +2,7 @@ import streamlit as st
 import folium
 import geopandas as gpd
 from streamlit_folium import st_folium
+from folium.plugins import fullscreen
 
 st.set_page_config(layout="wide")
 
