@@ -6,7 +6,7 @@ from streamlit_folium import folium_static
 st.set_page_config(layout="wide")
 
 # Load the GeoJSON file
-geojson_file = r'D:\30_days_Map_Challenge\1_Point\New folder\PMPML Bus Route - Jan 2019\shapes.geojson'  # Update with your GeoJSON file path
+geojson_file = r'https://raw.githubusercontent.com/maptomeaning-muluk/30_Days_Map_Challenge/main/2_Line/shapes.geojson'  # Update with your GeoJSON file path
 gdf = gpd.read_file(geojson_file)
 
 # Create a base map
