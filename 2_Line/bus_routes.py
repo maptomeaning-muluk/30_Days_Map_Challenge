@@ -6,21 +6,24 @@ from streamlit_folium import st_folium
 st.set_page_config(layout="wide")
 
 # Load the GeoJSON file
-geojson_file = r'https://raw.githubusercontent.com/maptomeaning-muluk/30_Days_Map_Challenge/main/2_Line/shapes.geojson'  # Update with your GeoJSON file path
-gdf = gpd.read_file(geojson_file)
+geojson_url = r'https://raw.githubusercontent.com/maptomeaning-muluk/30_Days_Map_Challenge/main/2_Line/shapes.geojson'
+try:
+    gdf = gpd.read_file(geojson_url)
+except Exception as e:
+    st.error(f"Error loading GeoJSON file: {e}")
+    st.stop()
 
 # Create a base map
 map_center = [18.52221821180045, 73.85665638906731]
 m = folium.Map(location=map_center, tiles='Cartodb Positron', zoom_start=11)
 
-
 # Function to add GeoJSON to the map
 def add_geojson_to_map(gdf):
     for _, row in gdf.iterrows():
         # Extract attributes
-        trip_id = row['Trip_ID']
-        trip_name = row['Trip_Name']
-        route_color = row['routes_colour']
+        trip_id = row.get('Trip_ID', 'Unknown')
+        trip_name = row.get('Trip_Name', 'Unknown')
+        route_color = row.get('routes_colour', '000000')  # Default to black if color not provided
 
         # Create a popup with the route details
         popup_html = f"""
@@ -34,14 +37,13 @@ def add_geojson_to_map(gdf):
             row.geometry,
             style_function=lambda x, color=route_color: {
                 'color': f'#{color}',
-                'weight': 3,  # Adjust line thickness
+                'weight': 3,
                 'opacity': 0.7
             },
-            popup=popup  # Attach the popup here
+            popup=popup
         )
 
         geojson.add_to(m)
-
 
 # Add the GeoJSON layer to the map
 add_geojson_to_map(gdf)
