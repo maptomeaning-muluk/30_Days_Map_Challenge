@@ -1,7 +1,7 @@
 import streamlit as st
 import folium
 import geopandas as gpd
-from streamlit_folium import folium_static
+from streamlit_folium import st_folium
 
 st.set_page_config(layout="wide")
 
@@ -52,4 +52,4 @@ col1, col2, col3 = st.columns([1, 4, 1])
 # Display the map in the central column (col2) to center it
 with col2:
     st.title("PMPML Service Area with Bus Routes")
-    folium_static(m, height=700, width=1000)
+    st_folium(m, height=700, width=1000)
