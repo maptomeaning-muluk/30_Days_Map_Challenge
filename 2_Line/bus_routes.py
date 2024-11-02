@@ -13,6 +13,7 @@ gdf = gpd.read_file(geojson_file)
 map_center = [18.52221821180045, 73.85665638906731]
 m = folium.Map(location=map_center, tiles='Cartodb Positron', zoom_start=11)
 
+
 # Function to add GeoJSON to the map
 def add_geojson_to_map(gdf):
     for _, row in gdf.iterrows():
@@ -21,7 +22,14 @@ def add_geojson_to_map(gdf):
         trip_name = row['Trip_Name']
         route_color = row['routes_colour']
 
-        # Create a GeoJSON feature and add to the map
+        # Create a popup with the route details
+        popup_html = f"""
+            <b>Route Number:</b> {trip_id}<br>
+            <b>Route Name:</b> {trip_name}<br>
+        """
+        popup = folium.Popup(popup_html, max_width=250)
+
+        # Create a GeoJSON feature and add it to the map
         geojson = folium.GeoJson(
             row.geometry,
             style_function=lambda x, color=route_color: {
@@ -29,13 +37,11 @@ def add_geojson_to_map(gdf):
                 'weight': 3,  # Adjust line thickness
                 'opacity': 0.7
             },
-
-        popup_html = f"""
-                <b>Route Number:</b> {trip_id}<br>
-                <b>Place Name:</b> {trip_name}<br>
-                """
+            popup=popup  # Attach the popup here
         )
+
         geojson.add_to(m)
+
 
 # Add the GeoJSON layer to the map
 add_geojson_to_map(gdf)
